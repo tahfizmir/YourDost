@@ -9,9 +9,8 @@ function App() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
 
-
   const [page, setPage] = useState(1);
-  const itemsPerPage = 3; 
+  const itemsPerPage = 3;
 
   useEffect(() => {
     const fetchUsers = async () => {
@@ -19,7 +18,11 @@ function App() {
         setLoading(true);
         setError("");
 
-        const res = await fetch("https://reqres.in/api/users");
+        const res = await fetch("https://reqres.in/api/users", {
+          headers: {
+            "x-api-key": "reqres-free-v1",
+          },
+        });
         const data = await res.json();
         setUsers(data.data || []);
       } catch (err) {
@@ -32,7 +35,6 @@ function App() {
     fetchUsers();
   }, []);
 
-  
   useEffect(() => {
     setPage(1);
   }, [search, sortField, sortOrder, letterFilter]);
@@ -83,9 +85,8 @@ function App() {
     <div className="min-h-screen bg-gray-100">
       <div className="max-w-5xl mx-auto px-4 py-6">
         <h1 className="text-2xl md:text-3xl font-semibold text-center mb-6">
-          User Directory Table 
+          User Directory Table
         </h1>
-
 
         <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between bg-white rounded-xl shadow-sm p-4 mb-4">
           <input
@@ -142,12 +143,10 @@ function App() {
           </div>
         )}
 
-    
         {error && !loading && (
           <p className="text-center text-red-600 font-medium mt-6">{error}</p>
         )}
 
-       
         {!loading && !error && (
           <>
             <div className="bg-white rounded-xl shadow-sm overflow-hidden">
@@ -209,7 +208,6 @@ function App() {
               </div>
             </div>
 
-          
             <div className="flex items-center justify-center gap-4 mt-4">
               <button
                 onClick={() => setPage((p) => p - 1)}
@@ -219,8 +217,8 @@ function App() {
                 ◀ Prev
               </button>
               <span className="text-sm text-gray-700">
-                Page{" "}
-                <span className="font-semibold text-gray-900">{page}</span> of{" "}
+                Page <span className="font-semibold text-gray-900">{page}</span>{" "}
+                of{" "}
                 <span className="font-semibold text-gray-900">
                   {totalPages || 1}
                 </span>
