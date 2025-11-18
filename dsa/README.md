@@ -1,0 +1,3 @@
+This function finds the second largest unique number in an array of integers. It works by removing duplicates and then scanning the numbers once to keep track of the largest and second largest values. That means it’s fast running in linear time. If the array doesn’t have at least two different numbers (like when everything is the same),it returns -1. Example if you run it with [3, 5, 2, 5, 6, 6, 1], it returns 5, because 6 is the largest and 5 is the next unique number. But with something like [7, 7, 7],there is no second unique number, so it returns -1.
+Time Complexity = O(n);
+Space Complexity= O(n); for the set i am using.
