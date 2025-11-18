@@ -83,7 +83,7 @@ function App() {
     <div className="min-h-screen bg-gray-100">
       <div className="max-w-5xl mx-auto px-4 py-6">
         <h1 className="text-2xl md:text-3xl font-semibold text-center mb-6">
-          User List 
+          User Directory Table 
         </h1>
 
 
